@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+:root {
+  --line-border-fill: #FF4D6D;
+  --line-border-empty: #DEE2E6;
+  /*
+   :root pseudo-class'ı, yani belge kökü (root element) seçicisi kullanılarak tanımlanmış iki özel CSS değişkeni (--line-border-fill ve --line-border-empty) içerir.
+:root seçicisi, bir belgenin kök öğesini (genellikle HTML) hedeflemek için kullanılır. Bu kod bloğunda, :root seçicisi, CSS özel değişkenlerinin tanımlanacağı ana etki alanını temsil eder.
+--line-border-fill ve --line-border-empty özel değişkenleri, sırasıyla bir çizgi veya kenarlığın dolu ve boş hallerinde kullanılacak renkleri tanımlar. Bu özel değişkenler daha sonra diğer stil tanımları içinde kullanılabilir ve burada, ::before öğesi için tanımlanan stil bloğunda da kullanılmaktadır. Bu şekilde, stil değişkenlerinin tekrar kullanımı kolaylaşır ve stil tanımlarını daha temiz ve okunaklı hale getirir. */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #F8F9FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
+  /*
+  body öğesi için stil tanımları içerir. Bu stil bloğu şunları içerir:
+font-family: "Inter", sans-serif;: Body öğesi için yazı tipi ailesini "Inter", sans-serif olarak ayarlar. "Inter" yazı tipi ailesi genellikle modern ve okunaklı bir yazı tipi olarak tercih edilir.
+background-color: #F8F9FA;: Body öğesi için arka plan rengini #F8F9FA olarak ayarlar. Bu açık renk, web sayfasının daha açık ve temiz görünmesine yardımcı olabilir.
+display: flex;: Body öğesinin bir flex konteyneri olduğunu belirtir.
+align-items: center;: Flex konteynerindeki öğeleri dikey eksende merkezler.
+justify-content: center;: Flex konteynerindeki öğeleri yatay eksende merkezler.
+height: 100vh;: Body öğesinin yüksekliğini, görüntüleme alanının tamamını kaplaması için 100 viewport yüksekliği (vh) olarak ayarlar.
+margin: 0px;: Body öğesinin dış kenar boşluğunu sıfırlar, böylece sayfa kenar boşluksuz görüntülenir.
+overflow: hidden;: Body öğesinin taşan içerikleri göstermemesi için taşma durumunu gizler. Bu özellik sayfa içeriğinin sınırlarını aşarsa kaydırmayı devre dışı bırakır ve böylece sayfada yatay ve dikey kaydırma çubukları görünmez. */
+}
+.container {
+  text-align: center;
+  /* background-color: red; */
+}
+.progress-container {
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  width: 350px;
+  max-width: 100%;
+  /* .progress-container sınıfı için stil tanımları içerir. Bu stil bloğu şunları içerir:
+display: flex;: .progress-container sınıfı için bir flex konteyneri oluşturur.
+justify-content: space-between;: Flex konteynerindeki öğeleri yatay eksende eşit mesafede yerleştirir. Bu, öğeleri konteynerin iki kenarı arasında eşit şekilde dağıtmak için kullanışlıdır.
+position: relative;: .progress-container sınıfı için göreceli bir konumlandırma ayarlar.
+margin-bottom: 30px;: .progress-container sınıfının alt kenarına 30 piksel boşluk ekler. Bu özellik, sayfadaki diğer öğelerle arasındaki boşluğu ayarlamak için kullanılabilir.
+width: 350px;: .progress-container sınıfının genişliğini 350 piksel olarak ayarlar. Bu, sınıfın içindeki öğelerin birbirine yakın ve düzenli bir şekilde sığmasını sağlar.
+max-width: 100%;: .progress-container sınıfının maksimum genişliğini görüntüleme alanının tamamı olarak ayarlar. Bu, sayfa boyutlarının değiştiği durumlarda, .progress-container sınıfının boyutlarının gerektiğinde küçülebileceği anlamına gelir. */
+}
+.progress-container::before {
+  content: "";
+  background-color: var(--line-border-empty);
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: 0.4s ease;
+  /* ::before öğesi, bir HTML öğesinin içeriğinin önüne, yani içeriğin başlangıcına bir pseudo-element ekler. ::before öğesi, HTML kodunda yer almaz, yalnızca CSS kullanılarak stil tanımlanır.
+::before öğesi, bir öğenin içeriğine ek bir şey eklemek istediğinizde kullanışlı olabilir. Örneğin, ::before öğesi, bir öğenin başına bir simge, bir çizgi, bir arka plan rengi veya başka bir özellik eklemek için kullanılabilir. ::before öğesi, bir öğenin stilini zenginleştirmeye ve daha iyi bir kullanıcı deneyimi sağlamaya yardımcı olabilir. */
+  /* progress-container sınıfına sahip bir HTML öğesinin ::before öğesi için stilleri tanımlar. Bu stiller şunları içerir:
+content: "": Pseudo-elementin içeriğini boş bir dize olarak ayarlar.
+background-color: var(--line-border-empty);: Pseudo-elementin arka plan rengini --line-border-empty adlı özel bir özellik değerine ayarlar.
+height: 4px;: Pseudo-elementin yüksekliğini 4 piksel olarak ayarlar.
+width: 100%;: Pseudo-elementin genişliğini, ana öğesinin genişliğinin %100'ü olarak ayarlar.
+position: absolute;: Pseudo-elementi, ebeveyn öğesine göre mutlak bir konuma yerleştirir.
+top: 50%;: Pseudo-elementin üst konumunu, ana öğesinin yüksekliğinin %50'sine ayarlar.
+left: 0;: Pseudo-elementin sol konumunu 0 olarak ayarlar.
+transform: translateY(-50%);: Pseudo-elementi dikey eksende, kendi yüksekliğinin %50'si kadar yukarı taşır.
+z-index: -1;: Pseudo-elementin z indeksini -1 olarak ayarlar, yani diğer öğelerin altında kalır.
+transition: 0.4s ease;: Pseudo-elementin geçiş efektinin süresini 0.4 saniye ve geçiş türünü "ease" olarak ayarlar. */
+}
+.progress {
+  background-color: var(--line-border-fill);
+  height: 4px;
+  width: 0%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: 0.4s ease;
+  /*
+  .progress sınıfı için stil tanımları içerir. Bu stil bloğu şunları içerir:
+background-color: var(--line-border-fill);: .progress sınıfının arka plan rengini --line-border-fill değişkenine ayarlar. Bu değişken, sayfanın başka bir yerinde tanımlanmış bir özel değişkendir.
+height: 4px;: .progress sınıfının yüksekliğini 4 piksel olarak ayarlar. Bu özellik, .progress sınıfının boyutunu belirler.
+width: 0%;: .progress sınıfının genişliğini sıfır olarak ayarlar. Bu, .progress sınıfının başlangıçta hiçbir genişliği olmadığı anlamına gelir.
+position: absolute;: .progress sınıfı için mutlak bir konumlandırma ayarlar.
+top: 50%;: .progress sınıfını, üst kenarının üstteki öğenin ortasında yer alacak şekilde ortalar.
+left: 0;: .progress sınıfını, sol kenara yapışık olarak yerleştirir.
+transform: translateY(-50%);: .progress sınıfını, dikey eksende yüzde 50 oranında hareket ettirir. Bu özellik, .progress sınıfını yatay eksende diğer öğelerle hizalamak için kullanışlıdır.
+z-index: -1;: .progress sınıfının z-eksenindeki konumunu ayarlar. Bu, .progress sınıfının diğer öğelerin altında kalmasını sağlar.
+transition: 0.4s ease;: .progress sınıfının geçiş animasyonunu ayarlar. Bu, .progress sınıfının genişliğinin değiştiği durumlarda, geçişin daha yumuşak ve düzgün görünmesini sağlar. */
+}
+.circle {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty);
+  transition: 0.4s ease;
+  /*
+  .circle sınıfı için stil tanımları içerir. Bu stil bloğu şunları içerir:
+background-color: #fff;: .circle sınıfının arka plan rengini beyaz olarak ayarlar.
+border-radius: 50%;: .circle sınıfına yuvarlak kenarlıklar verir.
+height: 30px;: .circle sınıfının yüksekliğini 30 piksel olarak ayarlar.
+width: 30px;: .circle sınıfının genişliğini 30 piksel olarak ayarlar.
+display: flex;: .circle sınıfını bir esnek kutu olarak ayarlar. Bu, içerik öğelerini hizalamak için daha fazla esneklik sağlar.
+align-items: center;: .circle sınıfındaki içerik öğelerini dikey eksende hizalar.
+justify-content: center;: .circle sınıfındaki içerik öğelerini yatay eksende hizalar.
+border: 3px solid var(--line-border-empty);: .circle sınıfına üç piksellik boş bir kenarlık ekler ve kenarlığın rengini --line-border-empty değişkenine ayarlar. Bu değişken, sayfanın başka bir yerinde tanımlanmış bir özel değişkendir.
+transition: 0.4s ease;: .circle sınıfındaki geçiş animasyonunu ayarlar. Bu, .circle sınıfındaki özelliklerin değiştiği durumlarda, geçişin daha yumuşak ve düzgün görünmesini sağlar. */
+}
+.circle.active {
+  border-color: var(--line-border-fill);
+  /* border-color: var(--line-border-fill);: .circle.active sınıfındaki öğelerin kenarlık rengini --line-border-fill değişkenine ayarlar. Bu, .circle sınıfındaki öğelerin kenarlık rengini değiştirir. Bu değişken, sayfanın başka bir yerinde tanımlanmış bir özel değişkendir. */
+}
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 24px;
+  font-size: 14px;
+  margin: 5px;
+  /*
+  background-color: var(--line-border-fill);: .btn sınıfındaki öğelerin arka plan rengini --line-border-fill değişkenine ayarlar. Bu, butonların arka plan rengini belirler. Bu değişken, sayfanın başka bir yerinde tanımlanmış bir özel değişkendir.
+color: #fff;: .btn sınıfındaki öğelerin metin rengini beyaz olarak ayarlar. Bu, buton metinlerinin rengini belirler.
+border: 0;: .btn sınıfındaki öğelerin kenarlık ayarlarını sıfırlar. Bu, butonların kenarlık özelliklerini kaldırır.
+border-radius: 8px;: .btn sınıfındaki öğelerin köşelerini yuvarlar. Bu, butonların köşelerini yuvarlar.
+cursor: pointer;: .btn sınıfındaki öğelerin fare işaretçisi biçimini değiştirir. Bu, butonlara tıklanabilirlik özelliği ekler.
+font-family: inherit;: .btn sınıfındaki öğelerin yazı tipi ailesini kalıt olarak alır. Bu, sayfadaki ana yazı tipi ailesini kullanır.
+padding: 8px 24px;: .btn sınıfındaki öğelerin dolgu (padding) ayarlarını ayarlar. Bu, butonların sol ve sağ kenarlarında 8 piksel, üst ve alt kenarlarında 24 piksellik dolgu alanı ekler.
+font-size: 14px;: .btn sınıfındaki öğelerin yazı tipi boyutunu ayarlar. Bu, buton metinlerinin boyutunu belirler.
+margin: 5px;: .btn sınıfındaki öğelerin dış kenarlık (margin) ayarlarını ayarlar. Bu, butonların birbirlerinden 5 piksellik boşluk bırakarak hizalanmasını sağlar. */
+}
+.btn:active {
+  transform: scale(0.98);
+  /*
+  Bu CSS kodu, kullanıcının bir düğmeye tıkladığında veya etkinleştirdiğinde stilini ayarlar. :active pseudo-class, kullanıcı tarafından şu anda etkinleştirilen bir öğeyi seçer ve stilini ayarlar. Bu durumda, transform özelliği, tıklanan düğmeyi küçültmek için kullanılır ve kullanıcıya düğmenin tıklandığına dair görsel geribildirim sağlar. Bu etki, scale fonksiyonu ve %2 küçültme değeri kullanılarak elde edilir, bu da düğmenin boyutunu %2 oranında azaltır. */
+}
+.btn:focus{
+    outline: 0;
+    /*
+  Bu CSS kodu, bir düğmeye odaklandığında yani üzerine klavye veya fare ile odaklanıldığında stilini ayarlar. :focus pseudo-class, bir öğenin odaklandığı zamanı seçer. Bu durumda, outline özelliği, bir düğme odaklandığında varsayılan olarak gösterilen çerçeve veya vurgulamayı kaldırmak için kullanılır. Bu, bazı kullanıcıların görsel engelleri nedeniyle odaklı öğelerin çerçevelerinden rahatsız olduğu veya bu çerçevelerin tasarıma uygun olmadığı durumlarda kullanışlıdır. Ancak, klavye erişilebilirliği gibi kullanıcı deneyimleri için önemli bir özellik olan odaklamayı tamamen kaldırmak da olumsuz sonuçlar doğurabilir. */
+}
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    /* Bu CSS kodu, bir düğme devre dışı bırakıldığında stilini ayarlar. :disabled pseudo-class, bir öğenin devre dışı bırakıldığı zamanı seçer. Bu durumda, background-color özelliği, devre dışı bırakılmış bir düğmenin arkaplan rengini var(--line-border-empty) olarak ayarlar. Bu, kullanıcının düğmeye tıklamasını veya işlem yapmasını önlemek için bazı durumlarda kullanılabilir. Örneğin, bir formda tüm gerekli alanların doldurulmadığı durumlarda bir kaydet düğmesinin devre dışı bırakılması gibi. */
+}
